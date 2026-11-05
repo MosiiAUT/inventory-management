@@ -59,7 +59,7 @@
         class="reset-filters-btn"
         @click="resetFilters"
         :disabled="!hasActiveFilters"
-        title="Reset all filters"
+        :title="t('filters.resetAll')"
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
@@ -106,14 +106,15 @@ export default {
   border-bottom: 1px solid #e2e8f0;
   padding: 0.75rem 0;
   position: sticky;
-  top: 70px;
+  /* Stick directly below the app topbar (height token from App.vue) */
+  top: var(--topbar-h, 60px);
   z-index: 90;
 }
 
 .filters-container {
-  max-width: 1600px;
+  max-width: var(--content-max-w, 1600px);
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 var(--page-padding, 2rem);
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -121,9 +122,11 @@ export default {
 
 .filters-grid {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem 1rem;
   flex: 1;
+  min-width: 0;
 }
 
 .filter-group {
@@ -190,5 +193,30 @@ export default {
 .reset-filters-btn svg {
   width: 18px;
   height: 18px;
+}
+
+/* Mobile: stack groups in a 2-column grid with full-width selects (no horizontal page scroll) */
+@media (max-width: 767px) {
+  .filters-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .filter-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    min-width: 0;
+  }
+
+  .filter-select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .filters-container {
+    align-items: flex-start;
+  }
 }
 </style>
