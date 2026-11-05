@@ -280,6 +280,40 @@ export default {
     december: '12月'
   },
 
+  // Reports
+  reports: {
+    title: 'パフォーマンスレポート',
+    description: '四半期ごとの業績指標と月次トレンドを表示',
+    loadError: 'レポートの読み込みに失敗しました',
+    notAvailable: 'N/A',
+    quarterLabel: '{year}年 第{quarter}四半期',
+    quarterly: {
+      title: '四半期パフォーマンス',
+      quarter: '四半期',
+      totalOrders: '総注文数',
+      totalRevenue: '総収益',
+      avgOrderValue: '平均注文額',
+      fulfillmentRate: '履行率'
+    },
+    trend: {
+      title: '月別収益トレンド'
+    },
+    mom: {
+      title: '前月比分析',
+      month: '月',
+      orders: '注文数',
+      revenue: '収益',
+      change: '増減',
+      growthRate: '成長率'
+    },
+    summary: {
+      totalRevenue: '総収益',
+      avgMonthlyRevenue: '月平均収益',
+      totalOrders: '総注文数',
+      bestQuarter: '最高業績の四半期'
+    }
+  },
+
   // Profile Menu
   profile: {
     profileDetails: 'プロフィール詳細',
